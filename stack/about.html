@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Sandwich&Co</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="about.css">
+</head>
+
+<body class="text-gray-800"> 
+    <header id="main-navigation-header">
+        <nav class="navbar">
+            <div class="logo">
+                <a href="./index.html"><img id="logo" src="./Pic/logo.png" alt="Sandwich&Co Logo" onerror="this.onerror=null; this.src='https://placehold.co/250x60/f9f3ed/3d5430?text=Logo';"></a>
+            </div>
+            <ul class="links">
+                <li><a href="./index.html">Главная</a></li>
+                <li><a href="./about.html" id="mainn">О нас</a></li>
+                <li><a href="./menu.html">Меню</a></li>
+                <li><a href="./index.html#calll">Связаться</a></li>
+            </ul>
+            <a href="feedback.html" class="action_btn">Отзыв</a>
+            <div class="toggle_btn" aria-label="Menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </nav>
+         <div class="dropdown_menu">
+             <li><a href="index.html">Главная</a></li>
+             <li><a href="about.html">О нас</a></li>
+             <li><a href="menu.html">Меню</a></li>
+             <li><a href="tel:+998937740556">Связаться</a></li>
+             <li><a href="feedback.html" class="action_btn">Отзыв</a></li>
+         </div>
+    </header>
+
+    <div class="bg-transparent py-6"> <div class="container mx-auto text-center px-4">
+            <h1 class="heading-special text-3xl sm:text-4xl md:text-5xl font-semibold text-green-800">About Us</h1>
+            <p class="text-gray-700 text-lg mt-2">A taste of tradition, a sip of innovation.</p>
+        </div>
+    </div>
+
+    <main class="container mx-auto py-10 px-4">
+        <div class="vertical-line-container">
+            <div id="static-line" class="vertical-line hidden md:block md:absolute md:top-0 md:left-1/2 md:-translate-x-1/2 md:w-[3px] md:bg-green-700 md:z-10"></div>
+            <div id="scrolling-line" class="scrolling-line hidden md:block md:absolute md:top-0 md:left-1/2 md:-translate-x-1/2 md:w-[3px] md:bg-green-300 md:z-20"></div>
+
+            <div id="main-content-wrapper" class="relative z-10 md:z-30">
+                <section class="spaced-section">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+                        <div class="image-center content-padding">
+                             <img src="./Pic/story story.jpg"
+                                 onerror="this.onerror=null; this.src='https://placehold.co/600x400/e0e0e0/666666?text=Story+Image';"
+                                 alt="Restaurant Interior" class="rounded-lg shadow-lg w-full max-w-md mx-auto md:mx-0">
+                        </div>
+                        <div class="relative content-padding text-center md:text-left">
+                            <div class="leaf leaf-up hidden md:block"></div>
+                            <h2 class="montserrat-heading text-2xl mb-4">Our Story</h2>
+                            <p class="brown-text text-base sm:text-lg">
+                                Founded in 2015 by Chef Gusteau, Sandwich&Co was born from a passion for bringing authentic flavors to our community. We are committed to using the finest, locally sourced ingredients whenever possible, and creating a warm, inviting space where everyone feels at home. From our humble beginnings, we have grown into a beloved local destination, known for our Signature Club Sandwich and unwavering dedication to quality.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="philosophy-section" class="spaced-section">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+                        <div class="image-center content-padding md:order-2">
+                             <img src="./Pic/story story.jpg"
+                                 onerror="this.onerror=null; this.src='https://placehold.co/600x400/e0e0e0/666666?text=Food+Image';"
+                                 alt="Delicious Food" class="rounded-lg shadow-lg w-full max-w-md mx-auto md:mx-0">
+                        </div>
+                        <div class="relative content-padding text-center md:text-left md:order-1">
+                            <div class="leaf leaf-down hidden md:block"></div>
+                            <h2 class="montserrat-heading text-2xl mb-4">Our Philosophy</h2>
+                            <p class="brown-text text-base sm:text-lg">
+                                At Sandwich&Co, we believe that food is more than just sustenance; it's an experience. We strive to create moments of connection and joy with every meal, celebrating the simple pleasures of life and the bonds of community. We are dedicated to sustainability, fostering a welcoming environment, and making a positive impact on the world around us.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="pt-10 pb-16">
+                    <h2 class="montserrat-heading text-2xl font-semibold text-green-800 text-center mb-8">Meet Our Team</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 content-padding">
+                        <div class="bg-white rounded-lg shadow-md p-6 text-center transition-transform duration-300 hover:scale-105">
+                             <img src="./Pic/photo_2025-04-14_10-11-33.jpg"
+                                 onerror="this.onerror=null; this.src='https://placehold.co/150x150/e0e0e0/666666?text=Chef';"
+                                 alt="Chef Antoine" class="rounded-full mx-auto mb-4 w-24 h-24 object-cover">
+                            <h3 class="text-lg font-semibold text-gray-800">Chef Antoine</h3>
+                            <p class="text-gray-600 text-sm">Executive Chef</p>
+                            <p class="brown-text text-sm mt-2">With 15 years of experience, Chef Antoine brings passion and creativity to our kitchen, crafting dishes that delight the senses.</p>
+                        </div>
+                        <div class="bg-white rounded-lg shadow-md p-6 text-center transition-transform duration-300 hover:scale-105">
+                             <img src="./Pic/photo_2025-04-14_10-11-33.jpg"
+                                 onerror="this.onerror=null; this.src='https://placehold.co/150x150/e0e0e0/666666?text=Manager';"
+                                 alt="Manager Sophie" class="rounded-full mx-auto mb-4 w-24 h-24 object-cover">
+                            <h3 class="text-lg font-semibold text-gray-800">Sophie Dubois</h3>
+                            <p class="text-gray-600 text-sm">General Manager</p>
+                            <p class="brown-text text-sm mt-2">Sophie ensures that every guest enjoys a memorable dining experience, with warm hospitality and impeccable service.</p>
+                        </div>
+                        <div class="bg-white rounded-lg shadow-md p-6 text-center transition-transform duration-300 hover:scale-105">
+                             <img src="./Pic/photo_2025-04-14_10-11-33.jpg"
+                                 onerror="this.onerror=null; this.src='https://placehold.co/150x150/e0e0e0/666666?text=Bartender';"
+                                 alt="Bartender Leo" class="rounded-full mx-auto mb-4 w-24 h-24 object-cover">
+                            <h3 class="text-lg font-semibold text-gray-800">Leo Martin</h3>
+                            <p class="text-gray-600 text-sm">Head Bartender</p>
+                            <p class="brown-text text-sm mt-2">Leo creates unique and innovative cocktails that perfectly complement our menu, adding a touch of artistry to your dining experience.</p>
+                        </div>
+                        <div class="bg-white rounded-lg shadow-md p-6 text-center transition-transform duration-300 hover:scale-105">
+                            <img src="./Pic/photo_2025-04-14_10-11-33.jpg"
+                                 alt="Team Member 4" class="rounded-full mx-auto mb-4 w-24 h-24 object-cover">
+                            <h3 class="text-lg font-semibold text-gray-800">Isabelle Moreau</h3>
+                            <p class="text-gray-600 text-sm">Sous Chef</p>
+                            <p class="brown-text text-sm mt-2">Isabelle supports the kitchen with precision and skill, ensuring every plate meets our high standards.</p>
+                        </div>
+                         <div class="bg-white rounded-lg shadow-md p-6 text-center transition-transform duration-300 hover:scale-105">
+                            <img src="./Pic/photo_2025-04-14_10-11-33.jpg"
+                                 alt="Team Member 5" class="rounded-full mx-auto mb-4 w-24 h-24 object-cover">
+                            <h3 class="text-lg font-semibold text-gray-800">Jean-Pierre</h3>
+                            <p class="text-gray-600 text-sm">Lead Waiter</p>
+                            <p class="brown-text text-sm mt-2">Jean-Pierre leads the front-of-house team, providing attentive and friendly service to all our guests.</p>
+                        </div>
+                         <div class="bg-white rounded-lg shadow-md p-6 text-center transition-transform duration-300 hover:scale-105">
+                            <img src="./Pic/photo_2025-04-14_10-11-33.jpg"
+                                 alt="Team Member 6" class="rounded-full mx-auto mb-4 w-24 h-24 object-cover">
+                            <h3 class="text-lg font-semibold text-gray-800">Chloé Petit</h3>
+                            <p class="text-gray-600 text-sm">Pastry Chef</p>
+                            <p class="brown-text text-sm mt-2">Chloé crafts our delightful desserts, adding a sweet finish to your dining experience.</p>
+                        </div>
+                    </div>
+                </section>
+            </div> </div> </main>
+
+            <footer>
+                <div class="footer-container">
+                    <div class="footer-brand">
+                        <img src="./Pic/logo.png" alt="Sandwich&Co Logo" class="footer-logo">
+                        <p class="footer-copyright">&copy; 2023 Sandwich&Co. All rights reserved.</p>
+                    </div>
+                    <div class="footer-links">
+                        <h4>Быстрые ссылки</h4>
+                        <ul>
+                            <li><a href="./index.html">Главная</a></li>
+                            <li><a href="./about.html">О нас</a></li>
+                            <li><a href="./menu.html">Меню</a></li>
+                            <li><a href="feedback.html">Отзыв</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-social">
+                        <h4>Следите за нами</h4>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-telegram-plane"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            
+    <script>
+        // --- START: JavaScript ---
+
+        // --- Header Scroll Effect ---
+        const header = document.getElementById('main-navigation-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) { // Add 'scrolled' class after scrolling 50px
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // --- Mobile Menu Toggle ---
+        const toggleBtn = document.querySelector('.toggle_btn');
+        const toggleBtnIcon = document.querySelector('.toggle_btn i');
+        const dropDownMenu = document.querySelector('.dropdown_menu');
+
+        toggleBtn.onclick = function () {
+            dropDownMenu.classList.toggle('open');
+            const isOpen = dropDownMenu.classList.contains('open');
+
+            // Change icon based on open state
+            toggleBtnIcon.className = isOpen
+                ? 'fa-solid fa-xmark' // Change to 'X' icon when open
+                : 'fa-solid fa-bars';  // Change back to 'bars' icon when closed
+        }
+
+        // Close dropdown if clicking outside of it
+        document.addEventListener('click', function(event) {
+            const isClickInsideNav = header.contains(event.target); // Check if click is inside header (includes toggle btn and dropdown)
+
+            if (!isClickInsideNav && dropDownMenu.classList.contains('open')) {
+                dropDownMenu.classList.remove('open');
+                toggleBtnIcon.className = 'fa-solid fa-bars';
+            }
+        });
+
+
+        // --- Scrolling Line Effect ---
+        const scrollingLine = document.getElementById('scrolling-line');
+        const staticLine = document.getElementById('static-line');
+        const mainContentWrapper = document.getElementById('main-content-wrapper');
+        const philosophySection = document.getElementById('philosophy-section'); // End point for the line
+        const mdBreakpoint = 768; // Tailwind's default md breakpoint
+
+        function updateLineHeight() {
+            // Only run animation if elements exist and on medium screens and up
+            if (!scrollingLine || !staticLine || !mainContentWrapper || !philosophySection || window.innerWidth < mdBreakpoint) {
+                if (scrollingLine) scrollingLine.style.height = '0px';
+                return;
+            }
+
+            const contentWrapperTop = mainContentWrapper.offsetTop;
+            // Calculate the bottom point where the line should end (adjust for padding/margin if needed)
+            const lineEndOffset = philosophySection.offsetTop + philosophySection.offsetHeight;
+            const staticLineHeight = parseFloat(staticLine.style.height) || 0; // Use the calculated static line height
+
+            const viewportHeight = window.innerHeight;
+            const scrollY = window.scrollY;
+
+            // Calculate when the top of the wrapper enters the viewport (start point)
+            // Start animation slightly before it's fully visible
+            const scrollStart = contentWrapperTop - viewportHeight * 0.8;
+
+            // Calculate when the bottom of the philosophy section leaves the viewport (end point)
+            // End animation slightly after it leaves view
+            const scrollEnd = lineEndOffset - viewportHeight * 0.2;
+
+            let scrollPercentage = 0;
+            if (scrollY > scrollStart && scrollY < scrollEnd) {
+                scrollPercentage = (scrollY - scrollStart) / (scrollEnd - scrollStart);
+            } else if (scrollY >= scrollEnd) {
+                scrollPercentage = 1;
+            }
+
+             // Clamp percentage between 0 and 1
+             scrollPercentage = Math.max(0, Math.min(1, scrollPercentage));
+
+            if (scrollingLine) {
+                scrollingLine.style.height = `${scrollPercentage * staticLineHeight}px`;
+            }
+        }
+
+        function setStaticLineHeight() {
+            // Only run if elements exist and on medium screens and up
+            if (!staticLine || !mainContentWrapper || !philosophySection || window.innerWidth < mdBreakpoint) {
+                if(staticLine) staticLine.style.height = '0px';
+                if(scrollingLine) scrollingLine.style.height = '0px'; // Also reset scrolling line
+                return;
+            }
+
+            // Calculate the desired height: bottom of philosophy section relative to top of the content wrapper
+            const contentWrapperTop = mainContentWrapper.offsetTop;
+            // Ensure philosophy section's offset calculation is accurate (might need adjustment based on its content/padding)
+            const lineEndOffset = philosophySection.offsetTop + philosophySection.offsetHeight;
+            const desiredHeight = lineEndOffset - contentWrapperTop; // Total height the line should cover
+
+            if(staticLine) {
+                // Set the height of the static background line
+                staticLine.style.height = `${desiredHeight}px`;
+            }
+            // Update scrolling line immediately after resize/load on large screens
+            updateLineHeight();
+        }
+
+        // --- Initialization ---
+        function initializePage() {
+             // Check if elements exist before trying to access them
+             if (scrollingLine && staticLine && mainContentWrapper && philosophySection) {
+                 setStaticLineHeight(); // Set static line height first
+                 updateLineHeight(); // Then update scrolling line based on initial scroll position
+             } else {
+                 console.warn("Line animation elements not found or incomplete during initialization.");
+                 // Optionally retry after a delay if elements load asynchronously
+                 // setTimeout(initializePage, 100);
+             }
+        }
+
+        // Add event listeners
+        window.addEventListener('scroll', updateLineHeight, { passive: true });
+        window.addEventListener('resize', () => {
+            // Recalculate heights on resize
+            setStaticLineHeight();
+        });
+
+        // Run initialization checks
+        if (document.readyState === 'loading') { // Loading hasn't finished yet
+            document.addEventListener('DOMContentLoaded', initializePage);
+        } else { // `DOMContentLoaded` has already fired
+            initializePage();
+        }
+        // Also run on load as a fallback for images affecting element offsets/heights
+        window.addEventListener('load', initializePage);
+
+        // --- END: JavaScript ---
+    </script>
+</body>
+</html>

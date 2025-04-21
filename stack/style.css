@@ -1,0 +1,1068 @@
+/* Importing Google Fonts with performance optimization */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Global Styles with improved accessibility */
+:root {
+  --primary-color: rgb(61, 84, 48);
+  --secondary-color: rgb(118, 153, 95);
+  --text-color: rgb(86, 59, 48);
+  --light-bg: #f8f5f0; /* This is likely the beige color: rgb(248, 245, 240) */
+  --header-bg: rgb(249, 243, 237); /* Explicit beige for header/dropdown */
+  --dark-green: #2b3a2a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+.links li a:hover{
+  color: brown;
+}
+body {
+  min-height: 100vh;
+  background-color: white;
+  color: var(--text-color);
+}
+
+li {
+  list-style: none;
+}
+#mainn{
+    color: var(--text-color); /* Match the green color */
+    letter-spacing: 0.1em; /* Add a little letter spacing if it looks spaced out */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Subtle text shadow for depth */
+    /* If you need the line: */
+    padding-bottom: 0.2em; /* Space between text and underline */
+    border-bottom: 2px solid var(--text-color); /* underline with same color */
+}
+a {
+  text-decoration: none;
+  color: var(--text-color);
+  /* color: black; */
+  font-size: 1.5rem; /* Default link size */
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--secondary-color);
+}
+
+/* HEADER with improved transitions */
+header {
+  /* This makes the header sticky on all devices */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 100px;
+  transition: all 0.3s ease;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  transform: translateZ(0); /* Helps on iOS */
+  background-color: var(--header-bg); /* Use variable */
+}
+
+/* Styles for when the header becomes sticky after scrolling */
+header.scrolled {
+  background-color: rgba(249,243,237, 0.8); /* Keep specific RGBA for scrolled transparency */
+  height: 80px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+  /* Removed redundant position: sticky; - it's inherited from 'header' */
+}
+
+.navbar {
+  width: 100%;
+  height: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo Style */
+.navbar .logo a {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0px; /* Corrected typo */
+}
+
+/* Navbar Links with active state */
+.navbar .links {
+  display: flex;
+  gap: 2rem;
+}
+
+/* Update nav links margin */
+.navbar .links li {
+  display: inline;
+  margin-top: 12px; /* Updated from 60px */
+}
+
+header .navbar .logo #logo{
+  margin-bottom: 30px; /* This seems specific, ensure #logo exists */
+}
+
+.navbar .links li a.active {
+  color: var(--secondary-color);
+  font-weight: bold;
+}
+
+/* Toggle Button */
+.navbar .toggle_btn {
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: none;
+  transition: transform 0.3s ease;
+}
+
+.navbar .toggle_btn:hover {
+  transform: scale(1.1);
+}
+
+/* Action Button */
+.action_btn {
+  background-color: var(--primary-color);
+  color: #fff;
+  width: 150px;
+  height: 50px;
+  display: flex; /* Use flex to center text */
+  justify-content: center; /* Center text horizontally */
+  align-items: center; /* Center text vertically */
+  padding: 0.5rem 1rem;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 900;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 60px; /* Global default for non-navbar uses */
+  margin-left: 20px;
+  will-change: transform;
+  text-decoration: none; /* Ensure button acts like a link visually if used as one */
+}
+
+.action_btn:hover {
+  transform: scale(1.05);
+  color: #fff;
+  background-color: var(--dark-green);
+}
+
+.action_btn:active {
+  transform: scale(0.95);
+}
+
+.action_btn:focus {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 3px;
+}
+
+/* DROPDOWN MENU with improved animation */
+.dropdown_menu {
+  display: none;
+  position: absolute;
+  right: 2rem;
+  top: 80px; /* Adjusted to match scrolled header height */
+  /* UPDATED: Increased width */
+  width: 320px;
+  background: rgba(249, 243, 237, 0.9); /* Use header beige with transparency */
+  backdrop-filter: blur(15px); /* Keep the blur effect */
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 10px;
+  overflow: hidden; /* Important for max-height animation */
+  max-height: 0; /* Initial state for animation */
+  opacity: 0;
+  transition: max-height 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+              opacity 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  z-index: 3; /* Ensure dropdown is above content but below header */
+}
+
+.dropdown_menu.open {
+  /* UPDATED: Increased max-height for more space */
+  max-height: 750px;
+  opacity: 1;
+}
+
+.dropdown_menu li {
+  padding: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centers the content (e.g., the <a> tag) */
+  transition: background-color 0.2s ease;
+}
+
+.dropdown_menu li:hover {
+  background-color: rgba(0,0,0,0.05); /* Keep subtle hover effect */
+}
+
+/* Override the action button's margin inside the navbar */
+.navbar .action_btn {
+  margin-top: 12px; /* Updated from 50px for navbar */
+}
+
+/* Responsive Design for Navbar */
+/* Merged duplicate @media (max-width: 992px) rules */
+@media (max-width: 992px) {
+  .navbar .logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .navbar .logo img {
+    width: 250px;
+    display: block;
+  }
+
+  .navbar .action_btn {
+    position: absolute;
+    left: 20px;
+    /* margin-top already set to 12px above */
+  }
+
+  .navbar .toggle_btn {
+    font-size: 2.5rem;
+    position: absolute;
+    right: 30px;
+    top: 12px; /* Updated from 20px */
+    display: block;
+  }
+
+  .navbar .links {
+    display: none;
+  }
+
+  .dropdown_menu {
+    display: block; /* Make it available for JS toggle */
+    /* Position adjustments for when it opens */
+    right: 2rem;
+    top: 80px; /* Match scrolled header height */
+  }
+  .dropdown_menu .action_btn{
+    display: none;
+  }
+  .toggle_btn{
+    margin-top: 10px;
+  }
+  /* Note: If the feedback button LI is present in HTML, it will show here unless hidden */
+}
+
+/* ABOUT SECTION with optimized background */
+/* Removed commented-out duplicate about-section styling */
+.about-section {
+  position: relative; /* Needed for pseudo-element positioning */
+  padding: 4rem 2rem;
+  background: var(--header-bg); /* Use variable for consistency */
+}
+
+/* Create a blurred background layer */
+.about-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("./Pic/ФирменныйУзор.png"); /* Make sure this path is correct */
+  background-size: 400px 400px; /* Adjust tile size as needed */
+  background-repeat: repeat;
+  /* filter: blur(2px); Adjust blur amount (2-5px recommended) */
+  opacity: 0.4; /* Adjust transparency (0-1) */
+  z-index: 0;
+}
+
+.about-container {
+  position: relative; /* Ensures content stays above background */
+  z-index: 1; /* Bring content to front */
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+}
+
+.about-image {
+  flex: 1;
+  border-radius: 15px;
+  overflow: hidden;
+  transform: rotate(-2deg);
+  box-shadow: 15px 15px 30px rgba(88, 81, 69, 0.1);
+  transition: transform 0.3s ease;
+  will-change: transform;
+}
+
+.about-image:hover {
+  transform: rotate(0deg) scale(1.02);
+}
+
+.about-image img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 15px;
+  image-rendering: -webkit-optimize-contrast; /* Consider browser support */
+}
+
+.about-content {
+  flex: 1;
+  padding-left: 2rem;
+}
+
+.about-content h2 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 2.8rem;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.highlight {
+  color: #6b705c;
+  font-style: italic;
+  font-size: 1.2rem;
+  margin: 1rem 0;
+}
+
+.about-content p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-color);
+  margin-bottom: 2rem;
+}
+
+.explore-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1.2rem 2.5rem;
+  background-color: var(--primary-color);
+  color: white !important; /* Ensure text color overrides default link color */
+  border-radius: 30px;
+  font-weight: 700;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border: 2px solid transparent;
+  will-change: transform;
+  text-decoration: none; /* Ensure button acts like a link visually */
+}
+
+.explore-btn:hover {
+  background-color: var(--dark-green);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(58, 79, 57, 0.2);
+}
+
+.explore-btn:active {
+  transform: translateY(0);
+}
+
+.explore-btn:focus {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 3px;
+}
+
+/* RESPONSIVE DESIGN with improved mobile experience for About Section */
+@media (max-width: 768px) {
+  .about-container {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .about-image {
+    flex: none;
+    width: 100%;
+    max-width: 500px;
+    transform: none;
+  }
+
+  .about-image img {
+    height: 400px;
+  }
+
+  .about-content {
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .about-content h2 {
+    font-size: 2.2rem;
+  }
+
+  .explore-btn {
+    margin: 0 auto; /* Center button when text is centered */
+  }
+  /* Note: If the feedback button LI is present in HTML, it will show here unless hidden */
+}
+
+@media (max-width: 576px) {
+  html, body {
+    /* Prevent horizontal scroll if possible */
+    max-width: 100%;
+    /* REMOVED: overflow-x: hidden; - This can interfere with position: sticky */
+  }
+
+  .navbar .action_btn {
+    display: none; /* Hide action button in navbar on smallest screens */
+  }
+
+  .dropdown_menu {
+    /* UPDATED: Adjust width calculation for new base width */
+    left: 2rem;
+    width: calc(100% - 4rem); /* This still works relative to viewport */
+    /* The base width of 320px might be wider than the viewport here, */
+    /* but max-width prevents it from overflowing */
+    max-width: 320px; /* Ensure it doesn't exceed the base width */
+  }
+
+  /* Styles for the action button (Feedback) within the dropdown on phone sizes */
+  /* This rule only applies if the feedback button LI is present in the HTML */
+  .dropdown_menu .action_btn {
+    display: flex; /* Use flex to allow alignment */
+    justify-content: center; /* Center text horizontally */
+    align-items: center; /* Center text vertically */
+    width: 100%; /* Make button take full width of li */
+    /* UPDATED: Removed fixed height, using padding now */
+    /* height: 35px; */
+    padding: 0.5rem 1rem; /* Add vertical padding */
+    /* UPDATED: Removed margin, rely on li padding */
+    margin: 0;
+    /* UPDATED: Set font size to match links */
+    font-size: 1.5rem;
+    /* UPDATED: Adjust font weight to be less bold */
+    font-weight: 500; /* Or 'normal' */
+    /* Inherits background, color etc. from global .action_btn */
+  }
+
+  .navbar .toggle_btn {
+    font-size: 2rem;
+    right: 20px;
+    top: 15px; /* Adjust position slightly */
+  }
+
+  .about-section {
+    padding: 2rem 1rem;
+  }
+
+  .about-image img {
+    height: 300px;
+  }
+
+  .about-content h2 {
+    font-size: 1.8rem;
+  }
+
+  .explore-btn {
+    padding: 1rem 2rem;
+    font-size: 0.9rem;
+  }
+
+  .dropdown_menu li {
+    padding: 1rem; /* Increase padding for easier tapping */
+    /* justify-content: center; is already inherited */
+  }
+
+  /* Ensure links within dropdown also have appropriate padding/size */
+  .dropdown_menu li a {
+      display: block; /* Make link take full width */
+      width: 100%;
+      text-align: center; /* Center text */
+      /* Font size is inherited (1.5rem) */
+  }
+  .dropdown_menu .action_btn{
+    width: 150px;
+    align-items: center;
+    text-align: center;
+    margin-left: 50px;
+    margin-top: 30px;
+  }
+  .dropdown_menu{
+    height: 320px;
+  }
+  .toggle_btn{
+    margin-top: 20px;
+  }
+  .logog{
+    width: 200px;
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+
+
+/* =========================
+   Menu Section Styles
+   (Removed duplicate/older menu-section block)
+========================= */
+
+
+
+.menu-section {
+  background: linear-gradient(135deg, #15231a 0%, #2a4533 100%);
+  padding: 5rem 0;
+  position: relative;
+  z-index: 1; /* Ensure menu is above about section bg pattern */
+}
+
+.menu-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section-title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 2.75rem;
+  color: #e8e0d3;
+  text-align: center;
+  margin-bottom: 4rem;
+  letter-spacing: 1.5px;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 100px;
+  height: 3px;
+  background: #c5a47e;
+  margin: 1rem auto;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.5rem;
+  padding: 1rem;
+}
+
+.menu-item {
+  position: relative;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.menu-item:hover {
+  transform: translateY(-8px);
+}
+
+.menu-card {
+  background: rgba(255, 255, 255, 0.97);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-card img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-bottom: 4px solid #c5a47e;
+  transition: opacity 0.3s ease;
+}
+
+.menu-card:hover img {
+  opacity: 0.92;
+}
+
+.menu-content {
+  padding: 1.8rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-content h3 {
+  color: #2a4533;
+  font-size: 1.45rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.menu-content p {
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.menu-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto; /* Pushes footer to bottom */
+}
+
+.price {
+  color: #c5a47e;
+  font-weight: 700;
+  font-size: 1.3rem;
+  letter-spacing: 0.5px;
+}
+
+.menu-btn {
+  background: #2a4533;
+  color: #fff;
+  padding: 0.6rem 1.5rem;
+  border-radius: 25px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.menu-btn:hover {
+  background: #c5a47e;
+  color: #2a4533;
+  border-color: #2a4533;
+}
+
+/* Responsive Design for Menu Section */
+@media (max-width: 1200px) {
+  .menu-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .menu-card img {
+    height: 240px;
+  }
+}
+
+@media (max-width: 992px) {
+  .menu-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .menu-section {
+    padding: 4rem 0;
+  }
+
+  .menu-container {
+    padding: 0 1.5rem;
+  }
+
+  .menu-card img {
+    height: 220px;
+  }
+
+  .menu-content h3 {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .menu-grid {
+    grid-template-columns: 1fr; /* Stack items vertically */
+    max-width: 500px; /* Limit width for better readability */
+    margin: 0 auto;
+  }
+
+  .section-title {
+    font-size: 2.2rem;
+    margin-bottom: 3rem;
+  }
+
+  .price {
+    font-size: 1.2rem;
+  }
+}
+
+
+
+/* Define CSS Variables for colors (Ensure these match your main site's variables) */
+:root {
+  --primary-color: rgb(61, 84, 48);
+  --secondary-color: rgb(118, 153, 95);
+  --text-color: rgb(86, 59, 48);
+  --light-bg: rgb(248, 245, 240);
+  /* --header-bg: rgb(249, 243, 237); /* This might not be needed if only including this section */
+  --dark-green: #2b3a2a;
+}
+
+/* =========================
+  CONTACT SECTION Styles (Work Hours & Location)
+========================= */
+.contact-section {
+  background-color: var(--light-bg); /* Use the light beige background */
+  padding: 5rem 2rem; /* Adjust padding as needed */
+}
+
+.contact-container {
+  max-width: 1200px; /* Match your site's container width */
+  margin: 0 auto;
+  display: flex; /* Use flexbox for layout */
+  gap: 4rem; /* Space between columns */
+  align-items: flex-start; /* Align items to the top */
+}
+
+.hours-column,
+.location-column {
+  flex: 1; /* Allow columns to grow and shrink */
+}
+
+.contact-section h3 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  position: relative; /* Needed if you add pseudo-elements later */
+  display: flex; /* Use flex to align icon and text */
+  align-items: center;
+}
+
+.contact-section h3 i {
+  margin-right: 15px; /* Space between icon and heading text */
+  color: var(--secondary-color); /* Color for the heading icon */
+  font-size: 1.5em; /* Size relative to heading text */
+}
+
+
+/* Styles for the hours list */
+.hours-list {
+  margin-bottom: 2rem; /* Space between hours and contact info */
+}
+
+.day-time {
+  display: flex; /* Use flexbox for day and time */
+  justify-content: space-between; /* Push day to left, time to right */
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-color);
+  border-bottom: 1px dashed rgba(86, 59, 48, 0.3); /* Subtle separator */
+  padding: 0.5rem 0;
+}
+
+.day-time:last-child {
+  border-bottom: none; /* No border for the last item */
+}
+
+.day {
+  font-weight: normal;
+}
+
+.time {
+  font-weight: bold;
+  color: var(--dark-green); /* Match the bold style from previous version */
+}
+
+/* Styles for the contact info section */
+.contact-info {
+  margin-top: 2rem; /* Space above contact info */
+}
+
+.contact-info h3 {
+   /* Inherits styles from .contact-section h3 but can be overridden */
+   margin-bottom: 1rem; /* Space below contact info heading */
+   font-size: 1.5rem; /* Smaller heading for contact info */
+}
+.contact-info h3 i {
+   font-size: 1em; /* Adjust icon size relative to contact heading */
+}
+
+
+.contact-info p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-color);
+  margin-bottom: 0.8rem; /* Space between contact items */
+  display: flex; /* Align icon and text */
+  align-items: center;
+}
+
+.contact-info p i {
+  margin-right: 10px; /* Space between icon and text */
+  color: var(--primary-color); /* Color for icons */
+  font-size: 1.2rem; /* Adjust icon size */
+}
+
+/* Styles for the map iframe */
+.location-column iframe {
+  width: 100%; /* Make iframe responsive */
+  height: 400px; /* Set a default height */
+  border-radius: 8px; /* Add rounded corners */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  border: 0; /* Remove default iframe border */
+}
+
+
+/* Responsive adjustments for Contact Section */
+@media (max-width: 992px) {
+  .contact-container {
+      flex-direction: column; /* Stack columns on smaller screens */
+      gap: 3rem;
+  }
+
+  .hours-column,
+  .location-column {
+      flex: none; /* Remove flex grow */
+      width: 100%; /* Take full width */
+  }
+
+  .location-column iframe {
+      height: 300px; /* Adjust height for smaller screens */
+  }
+
+  .contact-section h3 {
+      text-align: center; /* Center headings on smaller screens */
+       /* Remove flex alignment for centering text */
+       justify-content: center;
+  }
+   .contact-section h3 i {
+       margin-right: 10px; /* Adjust icon margin for centering */
+   }
+
+
+  /* Keep day and time on the same line and justified */
+  .day-time {
+      justify-content: space-between;
+      flex-direction: row; /* Ensure they stay in a row */
+      align-items: center;
+  }
+
+  .day, .time {
+      text-align: left; /* Align text left within their flex items */
+  }
+
+  .contact-info h3 {
+      text-align: center; /* Center contact info heading */
+      justify-content: center;
+  }
+   .contact-info h3 i {
+       margin-right: 10px;
+   }
+
+  .contact-info p {
+      justify-content: center; /* Center contact info on smaller screens */
+  }
+   .contact-info p i {
+       margin-right: 8px; /* Adjust icon margin */
+   }
+}
+
+@media (max-width: 576px) {
+  .contact-section {
+      padding: 3rem 1rem;
+  }
+
+  .contact-section h3 {
+      font-size: 1.7rem;
+  }
+
+   .contact-info h3 {
+       font-size: 1.3rem;
+   }
+
+
+   .day-time {
+      font-size: 1rem; /* Adjust font size for smaller screens */
+      padding: 0.4rem 0;
+   }
+
+  .location-column iframe {
+      height: 250px;
+  }
+
+  .contact-info p {
+      font-size: 1rem; /* Adjust font size for contact info */
+      margin-bottom: 0.6rem;
+  }
+
+  .contact-info p i {
+      font-size: 1rem; /* Adjust icon size */
+      margin-right: 8px;
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Define CSS Variables for colors (Ensure these match your main site's variables) */
+:root {
+  --primary-color: rgb(61, 84, 48);
+  --secondary-color: rgb(118, 153, 95);
+  --text-color: rgb(86, 59, 48);
+  --light-bg: rgb(248, 245, 240);
+  /* --header-bg: rgb(249, 243, 237); /* This might not be needed if only including the footer */
+  --dark-green: #2b3a2a;
+}
+
+/* =========================
+  FOOTER Styles
+========================= */
+footer {
+  background-color: var(--primary-color); /* Use the primary green color for background */
+  color: var(--light-bg); /* Use the light beige for text */
+  padding: 4rem 2rem;
+  font-family: "Montserrat", sans-serif;
+}
+
+.footer-container {
+  max-width: 1200px; /* Match your site's container width */
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem; /* Space between footer columns */
+  flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+}
+
+.footer-brand {
+  flex: 1;
+  min-width: 200px; /* Minimum width for the brand section */
+}
+
+.footer-logo {
+  width: 200px; /* Adjust logo size as needed */
+  margin-bottom: 1rem;
+  filter: brightness(0) invert(1); /* Make logo white or light to stand out on dark background */
+}
+
+.footer-copyright {
+  font-size: 0.9rem;
+  color: rgba(248, 245, 240, 0.7); /* Slightly less opaque copyright text */
+}
+
+.footer-links,
+.footer-social {
+  flex: 1;
+  min-width: 150px; /* Minimum width for link/social sections */
+}
+
+.footer-links h4,
+.footer-social h4 {
+  font-size: 1.2rem;
+  color: var(--secondary-color); /* Use secondary color for headings */
+  margin-bottom: 1.5rem;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 0.8rem;
+}
+
+.footer-links a {
+  color: var(--light-bg); /* Link color */
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: var(--secondary-color); /* Hover color */
+}
+
+.social-icons {
+  display: flex;
+  gap: 1rem; /* Space between social icons */
+}
+
+.social-icons a {
+  color: var(--light-bg); /* Icon color */
+  font-size: 1.5rem;
+  transition: color 0.2s ease;
+}
+
+.social-icons a:hover {
+  color: var(--secondary-color); /* Icon hover color */
+}
+
+/* Responsive adjustments for Footer */
+@media (max-width: 768px) {
+  .footer-container {
+      flex-direction: column; /* Stack footer columns */
+      text-align: center;
+      gap: 2rem;
+  }
+
+  .footer-brand,
+  .footer-links,
+  .footer-social {
+      min-width: 100%; /* Full width when stacked */
+  }
+
+  .footer-logo {
+      margin-left: auto;
+      margin-right: auto; /* Center logo */
+  }
+
+  .footer-links ul {
+      padding-top: 0.5rem; /* Add some space above links */
+  }
+
+  .social-icons {
+      justify-content: center; /* Center social icons */
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+  }
+}
